@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I ❤️ You</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff6b9d, #c44569, #f8b500, #ff3838, #8e44ad, #3498db);
+            background-size: 600% 600%;
+            animation: gradientShift 12s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 50% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .text {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: bold;
+            color: white;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px 0;
+            direction: ltr;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            letter-spacing: 3px;
+        }
+
+        .word {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .word:hover {
+            transform: translateY(-10px);
+            filter: brightness(1.2);
+        }
+
+        .heart {
+            font-size: clamp(4rem, 10vw, 8rem);
+            color: #ff1744;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            animation: heartbeat 2s infinite;
+            text-shadow: 0 0 30px rgba(255, 23, 68, 1);
+            filter: drop-shadow(0 0 10px rgba(255, 23, 68, 0.8));
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { 
+                transform: scale(1); 
+                filter: drop-shadow(0 0 10px rgba(255, 23, 68, 0.8));
+            }
+            50% { 
+                transform: scale(1.1); 
+                filter: drop-shadow(0 0 20px rgba(255, 23, 68, 1));
+            }
+        }
+
+        .heart:hover {
+            transform: scale(1.4) rotate(15deg);
+            filter: brightness(1.5) drop-shadow(0 0 30px rgba(255, 23, 68, 1));
+        }
+
+        /* التفاعلات المحدثة والجديدة */
+        .heart.bounce {
+            animation: bounceEffect 0.8s ease;
+        }
+
+        @keyframes bounceEffect {
+            0%, 100% { transform: scale(1) translateY(0); }
+            20% { transform: scale(1.3) translateY(-30px) rotate(10deg); }
+            40% { transform: scale(1.1) translateY(-15px) rotate(-5deg); }
+            60% { transform: scale(1.2) translateY(-25px) rotate(8deg); }
+            80% { transform: scale(1.05) translateY(-10px) rotate(-3deg); }
+        }
+
+        .heart.spin {
+            animation: spinEffect 1.2s ease;
+        }
+
+        @keyframes spinEffect {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.2); }
+            50% { transform: rotate(180deg) scale(1.6); }
+            75% { transform: rotate(270deg) scale(1.3); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .heart.pulse {
+            animation: pulseEffect 0.6s ease;
+        }
+
+        @keyframes pulseEffect {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 20px rgba(255, 23, 68, 0.8);
+                filter: brightness(1);
+            }
+            50% { 
+                transform: scale(2); 
+                box-shadow: 0 0 80px rgba(255, 23, 68, 1);
+                filter: brightness(2);
+            }
+        }
+
+        .heart.shake {
+            animation: shakeEffect 0.8s ease;
+        }
+
+        @keyframes shakeEffect {
+            0%, 100% { transform: translateX(0) scale(1); }
+            10% { transform: translateX(-15px) rotate(-10deg) scale(1.1); }
+            20% { transform: translateX(15px) rotate(10deg) scale(1.2); }
+            30% { transform: translateX(-12px) rotate(-8deg) scale(1.1); }
+            40% { transform: translateX(12px) rotate(8deg) scale(1.15); }
+            50% { transform: translateX(-8px) rotate(-5deg) scale(1.05); }
+            60% { transform: translateX(8px) rotate(5deg) scale(1.1); }
+            70% { transform: translateX(-5px) rotate(-3deg) scale(1.02); }
+            80% { transform: translateX(5px) rotate(3deg) scale(1.05); }
+            90% { transform: translateX(-2px) rotate(-1deg) scale(1.01); }
+        }
+
+        .heart.flip {
+            animation: flipEffect 1s ease;
+        }
+
+        @keyframes flipEffect {
+            0% { transform: rotateY(0deg) scale(1); }
+            25% { transform: rotateY(90deg) scale(1.3); }
+            50% { transform: rotateY(180deg) scale(1.6); }
+            75% { transform: rotateY(270deg) scale(1.3); }
+            100% { transform: rotateY(360deg) scale(1); }
+        }
+
+        .heart.glow {
+            animation: glowEffect 1.5s ease;
+        }
+
+        @keyframes glowEffect {
+            0%, 100% { 
+                filter: brightness(1);
+                text-shadow: 0 0 30px rgba(255, 23, 68, 1);
+            }
+            33% { 
+                filter: brightness(3);
+                text-shadow: 0 0 100px rgba(255, 255, 255, 1),
+                            0 0 150px rgba(255, 23, 68, 1);
+            }
+            66% { 
+                filter: brightness(2.5);
+                text-shadow: 0 0 80px rgba(255, 0, 150, 1),
+                            0 0 120px rgba(0, 255, 255, 0.8);
+            }
+        }
+
+        .heart.zoom {
+            animation: zoomEffect 0.8s ease;
+        }
+
+        @keyframes zoomEffect {
+            0% { transform: scale(1); }
+            20% { transform: scale(0.3) rotate(45deg); }
+            40% { transform: scale(1.8) rotate(-30deg); }
+            60% { transform: scale(0.7) rotate(60deg); }
+            80% { transform: scale(1.5) rotate(-15deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .heart.wobble {
+            animation: wobbleEffect 1s ease;
+        }
+
+        @keyframes wobbleEffect {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            10% { transform: rotate(-15deg) scale(1.2); }
+            20% { transform: rotate(12deg) scale(1.4); }
+            30% { transform: rotate(-10deg) scale(1.1); }
+            40% { transform: rotate(8deg) scale(1.3); }
+            50% { transform: rotate(-6deg) scale(1.15); }
+            60% { transform: rotate(5deg) scale(1.25); }
+            70% { transform: rotate(-3deg) scale(1.05); }
+            80% { transform: rotate(2deg) scale(1.1); }
+            90% { transform: rotate(-1deg) scale(1.02); }
+        }
+
+        .heart.rainbow {
+            animation: rainbowEffect 2s ease;
+        }
+
+        @keyframes rainbowEffect {
+            0% { color: #ff1744; transform: scale(1); }
+            14.28% { color: #ff5722; transform: scale(1.1); }
+            28.56% { color: #ffeb3b; transform: scale(1.2); }
+            42.84% { color: #4caf50; transform: scale(1.3); }
+            57.12% { color: #2196f3; transform: scale(1.2); }
+            71.4% { color: #9c27b0; transform: scale(1.1); }
+            85.68% { color: #e91e63; transform: scale(1.15); }
+            100% { color: #ff1744; transform: scale(1); }
+        }
+
+        /* تفاعلات جديدة */
+        .heart.explode {
+            animation: explodeEffect 1s ease;
+        }
+
+        @keyframes explodeEffect {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.2); opacity: 0.5; }
+            51% { transform: scale(3); opacity: 0; }
+            52% { transform: scale(0.1); opacity: 0; }
+            100% { transform: scale(1.5); opacity: 1; }
+        }
+
+        .heart.matrix {
+            animation: matrixEffect 1.2s ease;
+        }
+
+        @keyframes matrixEffect {
+            0% { transform: scale(1) skew(0deg); filter: hue-rotate(0deg); }
+            25% { transform: scale(1.3) skew(10deg); filter: hue-rotate(90deg); }
+            50% { transform: scale(0.7) skew(-15deg); filter: hue-rotate(180deg); }
+            75% { transform: scale(1.5) skew(5deg); filter: hue-rotate(270deg); }
+            100% { transform: scale(1) skew(0deg); filter: hue-rotate(360deg); }
+        }
+
+        .heart.teleport {
+            animation: teleportEffect 1s ease;
+        }
+
+        @keyframes teleportEffect {
+            0% { transform: scale(1) translateX(0); opacity: 1; }
+            25% { transform: scale(0.1) translateX(-200px); opacity: 0; }
+            26% { transform: scale(0.1) translateX(200px); opacity: 0; }
+            50% { transform: scale(0.1) translateX(200px); opacity: 0; }
+            75% { transform: scale(1.5) translateX(0); opacity: 0.5; }
+            100% { transform: scale(1) translateX(0); opacity: 1; }
+        }
+
+        .heart.morph {
+            animation: morphEffect 1.5s ease;
+        }
+
+        @keyframes morphEffect {
+            0% { border-radius: 0%; transform: scale(1) rotate(0deg); }
+            25% { border-radius: 50%; transform: scale(1.3) rotate(90deg); }
+            50% { border-radius: 0%; transform: scale(0.8) rotate(180deg); }
+            75% { border-radius: 30%; transform: scale(1.4) rotate(270deg); }
+            100% { border-radius: 0%; transform: scale(1) rotate(360deg); }
+        }
+
+        .heart.gravity {
+            animation: gravityEffect 1.2s ease;
+        }
+
+        @keyframes gravityEffect {
+            0% { transform: translateY(0) scale(1); }
+            30% { transform: translateY(-100px) scale(1.2) rotate(45deg); }
+            60% { transform: translateY(50px) scale(0.8) rotate(-30deg); }
+            80% { transform: translateY(-20px) scale(1.1) rotate(15deg); }
+            90% { transform: translateY(10px) scale(0.95) rotate(-5deg); }
+            100% { transform: translateY(0) scale(1) rotate(0deg); }
+        }
+
+        /* تأثيرات الخلفية المحسنة */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 2rem;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.15;
+            }
+            33% {
+                transform: translateY(-30px) rotate(120deg);
+                opacity: 0.4;
+            }
+            66% {
+                transform: translateY(-15px) rotate(240deg);
+                opacity: 0.25;
+            }
+        }
+
+        /* شرائط ضوئية */
+        .light-streaks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .streak {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.8), transparent);
+            animation: streak 3s infinite linear;
+        }
+
+        @keyframes streak {
+            0% {
+                top: -100px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+            }
+        }
+
+        /* جزيئات متطايرة */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #fff, transparent);
+            border-radius: 50%;
+            animation: particle 4s infinite linear;
+        }
+
+        @keyframes particle {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            20% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) translateY(-100vh);
+            }
+        }
+
+        .counter {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            font-weight: bold;
+            direction: ltr;
+        }
+
+        .mode-selector {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            direction: ltr;
+        }
+
+        .mode-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .mode-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .mode-btn.active {
+            background: rgba(255, 23, 68, 0.8);
+            border-color: #ff1744;
+        }
+
+        .instructions {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+            opacity: 0.9;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            direction: ltr;
+            max-width: 80%;
+        }
+
+        /* تأثيرات متقدمة للنص */
+        .text.glow-text {
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+            }
+            to {
+                text-shadow: 4px 4px 8px rgba(0,0,0,0.5),
+                           0 0 20px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        /* وضع الليل */
+        body.night-mode {
+            background: linear-gradient(135deg, #000428, #004e92, #2c1810, #8e0e00);
+        }
+
+        /* استجابة للشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .text {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .mode-selector {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .mode-btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-bg" id="heartsBackground"></div>
+    <div class="light-streaks" id="lightStreaks"></div>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="text" id="mainText">
+            <span class="word">I</span>
+            <span class="heart" id="interactiveHeart">❤️</span>
+            <span class="word">You</span>
+        </div>
+        
+        <div class="mode-selector">
+            <button class="mode-btn active" data-mode="sequential">تسلسلي</button>
+            <button class="mode-btn" data-mode="random">عشوائي</button>
+            <button class="mode-btn" data-mode="night">ليلي</button>
+            <button class="mode-btn" data-mode="party">حفلة</button>
+        </div>
+        
+        <div class="counter" id="clickCounter">Clicks: 0</div>
+    </div>
+    
+    <div class="instructions">
+        Click the heart to see amazing interactions! ❤️<br>
+        انقر على القلب لرؤية تفاعلات مذهلة!
+    </div>
+
+    <script>
+        const heart = document.getElementById('interactiveHeart');
+        const counter = document.getElementById('clickCounter');
+        const heartsBackground = document.getElementById('heartsBackground');
+        const lightStreaks = document.getElementById('lightStreaks');
+        const particles = document.getElementById('particles');
+        const mainText = document.getElementById('mainText');
+        const modeButtons = document.querySelectorAll('.mode-btn');
+        
+        let clickCount = 0;
+        let currentMode = 'sequential';
+        
+        const animations = [
+            'bounce', 'spin', 'pulse', 'shake', 'flip', 
+            'glow', 'zoom', 'wobble', 'rainbow', 'explode',
+            'matrix', 'teleport', 'morph', 'gravity', 'bounce'
+        ];
+        
+        // إعداد الأوضاع
+        modeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                modeButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentMode = btn.dataset.mode;
+                
+                if (currentMode === 'night') {
+                    document.body.classList.add('night-mode');
+                } else {
+                    document.body.classList.remove('night-mode');
+                }
+                
+                if (currentMode === 'party') {
+                    mainText.classList.add('glow-text');
+                    createPartyMode();
+                } else {
+                    mainText.classList.remove('glow-text');
+                }
+            });
+        });
+        
+        // إنشاء قلوب طائرة محسنة
+        function createFloatingHearts() {
+            heartsBackground.innerHTML = '';
+            for (let i = 0; i < 30; i++) {
+                const floatingHeart = document.createElement('div');
+                floatingHeart.className = 'floating-heart';
+                floatingHeart.innerHTML = ['❤️', '💖', '💕', '💗', '💘'][Math.floor(Math.random() * 5)];
+                floatingHeart.style.left = Math.random() * 100 + '%';
+                floatingHeart.style.top = Math.random() * 100 + '%';
+                floatingHeart.style.animationDelay = Math.random() * 8 + 's';
+                floatingHeart.style.fontSize = (1 + Math.random() * 2) + 'rem';
+                heartsBackground.appendChild(floatingHeart);
+            }
+        }
+        
+        // إنشاء شرائط ضوئية
+        function createLightStreaks() {
+            for (let i = 0; i < 5; i++) {
+                const streak = document.createElement('div');
+                streak.className = 'streak';
+                streak.style.left = Math.random() * 100 + '%';
+                streak.style.animationDelay = Math.random() * 3 + 's';
+                lightStreaks.appendChild(streak);
+            }
+        }
+        
+        // إنشاء جزيئات
+        function createParticles() {
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 4 + 's';
+                particles.appendChild(particle);
+            }
+        }
+        
+        // وضع الحفلة
+        function createPartyMode() {
+            setInterval(() => {
+                if (currentMode === 'party') {
+                    heart.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
+                }
+            }, 500);
+        }
+        
+        heart.addEventListener('click', function() {
+            clickCount++;
+            counter.textContent = `Clicks: ${clickCount}`;
+            
+            // إزالة جميع الكلاسات السابقة
+            heart.classList.remove(...animations);
+            
+            // اختيار التفاعل حسب الوضع
+            let currentAnimation;
+            if (currentMode === 'random') {
+                currentAnimation = animations[Math.floor(Math.random() * animations.length)];
+            } else {
+                const animationIndex = (clickCount - 1) % animations.length;
+                currentAnimation = animations[animationIndex];
+            }
+            
+            heart.classList.add(currentAnimation);
+            
+            // تأثيرات إضافية
+            createHeartBurst();
+            createShockwave();
+            
+            // إزالة الكلاس بعد انتهاء الأنيميشن
+            setTimeout(() => {
+                heart.classList.remove(currentAnimation);
+            }, 2000);
+        });
+        
+        // إنشاء انفجار قلوب محسن
+        function createHeartBurst() {
+            const heartTypes = ['💖', '💕', '💗', '💘', '💝', '💞', '💟', '❣️'];
+            
+            for (let i = 0; i < 10; i++) {
+                const burstHeart = document.createElement('div');
+                burstHeart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+                burstHeart.style.position = 'fixed';
+                burstHeart.style.left = '50%';
+                burstHeart.style.top = '50%';
+                burstHeart.style.fontSize = (1 + Math.random()) + 'rem';
+                burstHeart.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+                burstHeart.style.pointerEvents = 'none';
+                burstHeart.style.zIndex = '1000';
+                
+                const angle = (360 / 10) * i;
+                const distance = 100 + Math.random() * 100;
+                
+                burstHeart.style.animation = `burstAnimation 1.5s ease-out forwards`;
+                burstHeart.style.setProperty('--angle', angle + 'deg');
+                burstHeart.style.setProperty('--distance', distance + 'px');
+                
+                document.body.appendChild(burstHeart);
+                
+                setTimeout(() => {
+                    if (burstHeart.parentNode) {
+                        burstHeart.parentNode.removeChild(burstHeart);
+                    }
+                }, 1500);
+            }
+        }
+        
+        // إنشاء موجة صدمة
+        function createShockwave() {
+            const shockwave = document.createElement('div');
+            shockwave.style.position = 'fixed';
+            shockwave.style.left = '50%';
+            shockwave.style.top = '50%';
+            shockwave.style.width = '10px';
+            shockwave.style.height = '10px';
+            shockwave.style.border = '3px solid rgba(255, 255, 255, 0.8)';
+            shockwave.style.borderRadius = '50%';
+            shockwave.style.transform = 'translate(-50%, -50%)';
+            shockwave.style.animation = 'shockwave 0.8s ease-out forwards';
+            shockwave.style.pointerEvents = 'none';
+            shockwave.style.zIndex = '999';
+            
+            document.body.appendChild(shockwave);
+            
+            setTimeout(() => {
+                if (shockwave.parentNode) {
+                    shockwave.parentNode.removeChild(shockwave);
+                }
+            }, 800);
+        }
+        
+        // إنشاء أنيميشن للقلوب المتطايرة المحسنة
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes burstAnimation {
+                0% {
+                    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                50% {
+                    transform: translate(calc(-50% + cos(var(--angle)) * var(--distance)), calc(-50% + sin(var(--angle)) * var(--distance))) scale(1.5) rotate(180deg);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: translate(calc(-50% + cos(var(--angle)) * calc(var(--distance) * 2)), calc(-50% + sin(var(--angle)) * calc(var(--distance) * 2))) scale(0) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes shockwave {
+                0% {
+                    width: 10px;
+                    height: 10px;
+                    opacity: 1;
+                }
+                100% {
+                    width: 300px;
+                    height: 300px;
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // تهيئة التأثيرات عند تحميل الصفحة
+        createFloatingHearts();
+        createLightStreaks();
+        createParticles();
+        
+        // تحديث دوري للتأثيرات
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                createFloatingHearts();
+            }
+        }, 10000);
+    </script>
+</body>
+</html>
